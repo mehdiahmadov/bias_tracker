@@ -50,7 +50,7 @@ function findBias(text) {
     const BIAS_WEIGHT = 2;
     const GENDER_BIASES = {
         masculine: {
-            words: ["active", "adventurous", "articulate", "confident", "decide", "decisive", "dominant", "greedy", "headstrong", "head-strong", "implusive", "levelheaded", "level-headed", "masculine", "objective", "opinion", "outspoken", "persist", "reckless", "versatile"],
+            words: ["active", "adventurous", "articulate", "confident", "decide", "decisive", "dominant", "greedy", "guru", "hacker", "headstrong", "head-strong", "implusive", "levelheaded", "level-headed", "masculine", "ninja", "objective", "opinion", "outspoken", "persist", "reckless", "rockstar", "superhero", "versatile"],
             prefixes: ["aggress", "ambitio", "analy", "assert", "athlet", "autonom", "battle", "boast", "challeng", "champion", "compet", "confiden", "courag", "decid", "decision", "decisive", "defend", "determin", "domina", "dominant", "driven", "fearless", "fight", "force", "hierarch", "hostil", "impulsive", "independen", "individual", "intellect", "lead", "logic", "practical", "principle", "self-confiden", "selfrelian", "self-relian", "selfsufficien", "self-sufficien", "stubborn", "superior", "unreasonab"],
         },
         feminine: {
