@@ -7,10 +7,9 @@ importScripts("analysis.js");
 chrome.runtime.onMessage.addListener((request, sender) => {
   // Find bias and update the extension icon accordingly
   const [bias] = findBias(request.innerText);
-  if (bias < 50) {
-    chrome.action.setIcon({
-      path: "images/red16.png",
-      tabId: sender.tab.id
-    });      
-  }
+
+  chrome.action.setIcon({
+    path: "images/circle_green.png",
+    tabId: sender.tab.id
+  });
 });
