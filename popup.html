@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="button.css">
   </head>
   <body>
-    <button id="changeColor">Detec bias in this text</button>
-    <script src="popup.js"></script>
+    <p>Bias Score: <span id="bias"></span></p>
+    <script src="lodash.min.js"></script>
+    <script src="analysis.js"></script>
+    <script type="module" src="popup.js"></script>
   </body>
 </html>

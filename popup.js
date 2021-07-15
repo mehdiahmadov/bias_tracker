@@ -1,29 +1,11 @@
-// Initialize butotn with users's prefered color
-let changeColor = document.getElementById("changeColor");
-
-chrome.storage.sync.get("color", ({ color }) => {
-  changeColor.style.backgroundColor = color;
-});
-
-// When the button is clicked, inject setPageBackgroundColor into current page
-changeColor.addEventListener("click", async () => {
-  let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-
-  chrome.scripting.executeScript({
-    target: { tabId: tab.id },
-    function: setPageBackgroundColor,
+// Wait for the popup's content to load
+window.addEventListener("load", async () => {
+  // Get the current chrome tab
+  const [tab] = await chrome.tabs.query({ currentWindow: true, active: true });
+  // Get the current chrome tab's innerText
+  chrome.tabs.sendMessage(tab.id, { action: "get-inner-text" }, ({ innerText }) => {
+    // Find bias and display
+    const [bias] = findBias(innerText, { DEBUG: true });
+    if (bias) document.getElementById("bias").innerText = bias.toFixed(2) + "%";
   });
 });
-
-// The body of this function will be execuetd as a content script inside the
-// current page
-function setPageBackgroundColor() {
-  chrome.storage.sync.get("color", ({ color }) => {
-    if (document.body.innerHTML.includes('millenial')) {
-      alert('BIAS!!!');
-      document.body.style.backgroundColor = color;
-    } else {
-      alert('NO BIAS!');
-    };
-  });
-}
