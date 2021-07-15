@@ -50,12 +50,12 @@ function findBias(text) {
     const BIAS_WEIGHT = 2;
     const GENDER_BIASES = {
         masculine: {
-            words: ["active", "adventurous", "confident", "decide", "decisive", "dominant", "greedy", "headstrong", "head-strong", "implusive", "masculine", "objective", "opinion", "outspoken", "persist", "reckless"],
-            prefixes: ["aggress", "ambitio", "analy", "assert", "athlet", "autonom", "battle", "boast", "challeng", "champion", "compet", "confiden", "courag", "decid", "decision", "decisive", "defend", "determin", "domina", "dominant", "driven", "fearless", "fight", "force", "hierarch", "hostil", "impulsive", "independen", "individual", "intellect", "lead", "logic", "principle", "self-confiden", "selfrelian", "self-relian", "selfsufficien", "self-sufficien", "stubborn", "superior", "unreasonab"],
+            words: ["active", "adventurous", "articulate", "confident", "decide", "decisive", "dominant", "greedy", "headstrong", "head-strong", "implusive", "levelheaded", "level-headed", "masculine", "objective", "opinion", "outspoken", "persist", "reckless", "versatile"],
+            prefixes: ["aggress", "ambitio", "analy", "assert", "athlet", "autonom", "battle", "boast", "challeng", "champion", "compet", "confiden", "courag", "decid", "decision", "decisive", "defend", "determin", "domina", "dominant", "driven", "fearless", "fight", "force", "hierarch", "hostil", "impulsive", "independen", "individual", "intellect", "lead", "logic", "practical", "principle", "self-confiden", "selfrelian", "self-relian", "selfsufficien", "self-sufficien", "stubborn", "superior", "unreasonab"],
         },
         feminine: {
-            words: ["affectionate", "feminine", "flatterable", "honest", "kind", "kinship", "modesty", "nag", "share"],
-            prefixes: ["agree", "child", "cheer", "collab", "commit", "communal", "compassion", "connect", "considerate", "cooperat", "co-operat", "depend", "emotiona", "empath", "enthusias", "feel", "gentle", "inclusive", "interpersonal", "inter-personal", "interdependen", "inter-dependen", "interpersona", "inter-persona", "loyal", "nurtur", "pleasant", "polite", "quiet", "respon", "sensitiv", "sharin", "submissive", "support", "sympath", "tender", "together", "trust", "understand", "warm", "whin", "yield"],
+            words: ["affectionate", "feminine", "flatterable", "honest", "kind", "kinship", "modesty", "nag", "share", "organized"],
+            prefixes: ["agree", "child", "cheer", "collab", "commit", "communal", "compassion", "connect", "considerate", "cooperat", "co-operat", "depend", "emotiona", "empath", "energetic", "enthusias", "feel", "gentle", "inclusive", "interpersonal", "inter-personal", "interdependen", "inter-dependen", "interpersona", "inter-persona", "loyal", "nurtur", "pleasant", "polite", "quiet", "respon", "sensitiv", "sharin", "submissive", "support", "sympath", "tender", "together", "trust", "understand", "warm", "whin", "yield"],
         },
     };
 
