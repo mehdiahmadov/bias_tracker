@@ -1,6 +1,16 @@
-let color = '#3aa757';
+// Required for the findBias function
+importScripts("lodash.min.js");
+importScripts("analysis.js");
 
-chrome.runtime.onInstalled.addListener(() => {
-  chrome.storage.sync.set({ color });
-  console.log('Default background color set to %cgreen', `color: ${color}`);
+
+// Wait for a message with the current tab's innerText
+chrome.runtime.onMessage.addListener((request, sender) => {
+  // Find bias and update the extension icon accordingly
+  const [bias] = findBias(request.innerText);
+  if (bias < 50) {
+    chrome.action.setIcon({
+      path: "images/red16.png",
+      tabId: sender.tab.id
+    });      
+  }
 });
