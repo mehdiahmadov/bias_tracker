@@ -2,16 +2,29 @@
 importScripts("lodash.min.js");
 importScripts("analysis.js");
 
+let timeoutId;
 
-// Wait for a message with the current tab's innerText
-chrome.runtime.onMessage.addListener((request, sender) => {
-  // Find bias and update the extension icon accordingly
-  const [bias] = findBias(request.innerText);
-  const greenPath = "images/circle_green.png";
-  const redPath = "images/circle_red.png";
+chrome.tabs.onUpdated.addListener(
+  function(tabId, changeInfo, tab) {
+    chrome.action.setIcon({
+      path: 'images/circle_grey.png',
+      tabId,
+    });
 
-  chrome.action.setIcon({
-    path: bias > 1.0 ? redPath : greenPath,
-    tabId: sender.tab.id
-  });
-});
+    clearTimeout(timeoutId);
+
+    timeoutId = setTimeout(() => {
+      chrome.tabs.sendMessage(tabId, { action: "get-inner-text" }, ({ innerText }) => {
+        const [bias] = findBias(innerText);
+        const greenPath = "images/circle_green.png";
+        const redPath = "images/circle_red.png";
+
+        chrome.action.setIcon({
+          path: bias > 2.0 ? redPath : greenPath,
+          tabId,
+        });
+      });
+    }, 1500);
+
+  }
+);

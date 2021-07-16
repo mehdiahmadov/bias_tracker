@@ -1,5 +1,5 @@
 // Wait for the popup's content to load
-window.addEventListener("load", async () => {
+window.addEventListener('load', async () => {
   // Get the current chrome tab
   const [tab] = await chrome.tabs.query({ currentWindow: true, active: true });
   // Get the current chrome tab's innerText
@@ -10,7 +10,16 @@ window.addEventListener("load", async () => {
     if (bias) {
       const biasEl = document.getElementById("bias");
       biasEl.innerText = bias.toFixed(2) + "%";
-      biasEl.style.setProperty("color", bias > 1.0 ? "red" : "green");
+      biasEl.style.setProperty("color", bias > 2.0 ? "red" : "green");
+
+      // Make sure the icon is set the same
+      const greenPath = "images/circle_green.png";
+      const redPath = "images/circle_red.png";
+
+      chrome.action.setIcon({
+        path: bias > 2.0 ? redPath : greenPath,
+        tabId: tab.id,
+      });
     }
 
     const tablesContainer = document.getElementById('tables-container');
