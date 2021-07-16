@@ -3,11 +3,58 @@
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="button.css">
+    <style>
+      main {
+        width: 200px;
+        color: #707070;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 14px;
+      }
+
+      #tables-container {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+      }
+
+      table {
+        flex: 1;
+      }
+
+      th, td {
+        text-align: center;
+      }
+
+      th {
+        text-transform: capitalize;
+      }
+
+      #score_container {
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      #bias {
+        color: green;
+      }
+    </style>
   </head>
   <body>
-    <p>Bias Score: <span id="bias"></span></p>
     <script src="lodash.min.js"></script>
     <script src="analysis.js"></script>
     <script type="module" src="popup.js"></script>
+
+    <main>
+      <h1>Results</h1>
+      <div id="tables-container"></div>
+      <div id="score_container">
+        <p>Bias Score: <span id="bias"></span></p>
+      </div>
+    </main>
   </body>
 </html>
