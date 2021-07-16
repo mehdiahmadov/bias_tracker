@@ -32,6 +32,10 @@ function getInnerText() {
   else if (window.location.origin === "https://www.simplyhired.com") {
     const el = document.getElementsByClassName("viewjob-section")[0];
     if (el) innerText = el.innerText;
+  } else if (window.location.origin.includes('linkedin.com/jobs')) {
+    const el = document.getElementsByClassName('jobs-description-content__text')[0];
+
+    innerText = el && el.innerText || innerText;
   }
 
   return innerText;
