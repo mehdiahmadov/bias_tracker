@@ -7,7 +7,11 @@ window.addEventListener("load", async () => {
     // Find bias and display
     const [bias, found, text] = findBias(innerText, { DEBUG: true });
 
-    if (bias) document.getElementById("bias").innerText = bias.toFixed(2) + "%";
+    if (bias) {
+      const biasEl = document.getElementById("bias");
+      biasEl.innerText = bias.toFixed(2) + "%";
+      biasEl.style.setProperty("color", bias > 1.0 ? "red" : "green");
+    }
 
     const tablesContainer = document.getElementById('tables-container');
 
