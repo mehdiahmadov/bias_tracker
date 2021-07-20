@@ -1,5 +1,5 @@
 {
-  "name": "Bias Detector",
+  "name": "Bias Tracker",
   "description": "This extension detects bias in articles and news outlets",
   "version": "1.0",
   "manifest_version": 3,
