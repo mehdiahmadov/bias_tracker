@@ -3,7 +3,7 @@ window.addEventListener('load', async () => {
   // Get the current chrome tab
   const [tab] = await chrome.tabs.query({ currentWindow: true, active: true });
   // Get the current chrome tab's innerText
-  chrome.tabs.sendMessage(tab.id, { action: "get-inner-text" }, ({ innerText }) => {
+  chrome.tabs.sendMessage(tab.id, { action: "get-inner-text" }, ({ innerText, genderColors }) => {
     // Find bias and display
     const [bias, found, text] = findBias(innerText, { DEBUG: true });
 
@@ -28,7 +28,7 @@ window.addEventListener('load', async () => {
 
     for(let gender in found) {
       const words = found[gender];
-      const table = createGenderWordsTable(gender, words);
+      const table = createGenderWordsTable(gender, words, genderColors);
 
       tablesContainer.appendChild(table);
     }
@@ -40,12 +40,15 @@ window.addEventListener('load', async () => {
  * @param {string} gender
  * @param {Set} words
  */
-function createGenderWordsTable(gender, words) {
+function createGenderWordsTable(gender, words, colors) {
   const table = document.createElement('table');
   const headerRow = document.createElement('tr');
   const headerCell = document.createElement('th');
 
+  headerCell.style.setProperty("background-color", colors[gender]);
+  headerCell.classList.add("header");
   headerCell.textContent = gender;
+
   headerRow.appendChild(headerCell);
   table.appendChild(headerRow);
 

@@ -45,7 +45,7 @@ function _calculateGenderBias(text, genderBiases) {
     );
 
     score[key] = count;
-    _found[key] = found;
+    _found[key] = Array.from(found);
   }
 
   return [score, _found, _text];

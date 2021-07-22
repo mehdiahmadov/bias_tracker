@@ -15,16 +15,23 @@ chrome.tabs.onUpdated.addListener(
 
     timeoutId = setTimeout(() => {
       chrome.tabs.sendMessage(tabId, { action: "get-inner-text" }, ({ innerText }) => {
-        const [bias] = findBias(innerText);
+        if (!innerText) return;
+
+        const [bias, found, text] = findBias(innerText);
         const greenPath = "images/circle_green.png";
         const redPath = "images/circle_red.png";
+
+        chrome.tabs.sendMessage(tabId, {
+          action: "highlight-inner-text",
+          found,
+        });
 
         chrome.action.setIcon({
           path: bias > 2.0 ? redPath : greenPath,
           tabId,
         });
       });
-    }, 1500);
+    }, 500);
 
   }
 );
